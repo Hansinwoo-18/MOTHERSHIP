@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Operator Profile</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    background:#050505;
+    color:white;
+    font-family:Orbitron,sans-serif;
+    padding:40px;
+}
+
+.profile{
+    max-width:700px;
+    margin:auto;
+    border:1px solid #333;
+    padding:30px;
+    background:#0b0b0b;
+}
+
+h1{
+    margin-bottom:20px;
+}
+
+.info{
+    margin:15px 0;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="profile">
+
+<h1 id="operatorName">UNKNOWN</h1>
+
+<div class="info">
+CODE:
+<span id="operatorCode"></span>
+</div>
+
+<div class="info">
+LOCATION:
+<span id="operatorCity"></span>
+</div>
+
+<div class="info">
+STATUS:
+<span id="operatorStatus"></span>
+</div>
+
+</div>
+
+<script>
+
+const operator =
+JSON.parse(
+localStorage.getItem("selectedOperator")
+);
+
+if(operator){
+
+document.getElementById("operatorName").textContent =
+operator.name;
+
+document.getElementById("operatorCode").textContent =
+operator.code.toUpperCase();
+
+document.getElementById("operatorCity").textContent =
+operator.city;
+
+document.getElementById("operatorStatus").textContent =
+operator.status;
+
+}
+
+</script>
+
+</body>
+</html>

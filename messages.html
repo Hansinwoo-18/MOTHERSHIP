@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>MOTHERSHIP | Messages</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+
+<body>
+
+<div class="chat-app">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="chat-sidebar">
+
+        <div class="chat-logo">
+            MOTHERSHIP
+        </div>
+
+        <div class="server-title">
+            COMMAND NETWORK
+        </div>
+
+
+        <div class="channel-title">
+            CHANNELS
+        </div>
+
+        <div class="channel active">
+            # general
+        </div>
+
+        <div class="channel">
+            # missions
+        </div>
+
+        <div class="channel">
+            # intelligence
+        </div>
+
+        <div class="channel">
+            # command
+        </div>
+
+
+        <<div class="online-count">
+    <span id="onlineCount">0</span>
+    OPERATORS ONLINE
+</div>
+
+<div class="online-users" id="onlineUsers"></div>
+
+    </aside>
+
+
+
+    <!-- CHAT -->
+
+    <main class="chat-main">
+
+
+        <header class="chat-header">
+
+            <div>
+
+                <h2>
+                    # general
+                </h2>
+
+                <span>
+                    MOTHERSHIP COMMAND NETWORK
+                </span>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- MESSAGES -->
+
+        <div
+            id="messages"
+            class="messages">
+
+        </div>
+
+
+
+        <!-- TYPING -->
+
+        <div
+            id="typing"
+            class="typing">
+
+        </div>
+
+
+
+        <!-- INPUT -->
+
+        <div class="chat-input-area">
+
+            <input
+                id="messageInput"
+                type="text"
+                placeholder="Message #general..."
+                autocomplete="off">
+
+            <button
+                id="sendButton">
+
+                SEND
+
+            </button>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- SOCKET.IO -->
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script src="messages.js"></script>
+
+
+</body>
+
+</html>

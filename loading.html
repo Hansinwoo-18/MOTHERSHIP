@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MOTHERSHIP | Loading</title>
+
+    <!-- Orbitron -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* =========================================
+           BODY
+        ========================================= */
+
+        body {
+            width: 100%;
+            height: 100vh;
+
+            overflow: hidden;
+
+            background: #050505;
+            color: #ffffff;
+
+            font-family: "Orbitron", sans-serif;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* =========================================
+           BACKGROUND GRID
+        ========================================= */
+
+        body::before {
+            content: "";
+
+            position: fixed;
+            inset: 0;
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,0.035) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.035) 1px,
+                    transparent 1px
+                );
+
+            background-size: 32px 32px;
+
+            pointer-events: none;
+        }
+
+
+        /* =========================================
+           LOADING CONTAINER
+        ========================================= */
+
+        .loading-container {
+            width: min(700px, 85%);
+
+            text-align: center;
+
+            position: relative;
+            z-index: 2;
+        }
+
+
+        /* =========================================
+           LOGO
+        ========================================= */
+
+        .logo {
+            font-size: clamp(45px, 8vw, 90px);
+
+            font-weight: 900;
+
+            letter-spacing: 8px;
+
+            margin-bottom: 15px;
+
+            text-shadow:
+                0 0 10px rgba(255,255,255,0.25),
+                0 0 30px rgba(255,255,255,0.08);
+        }
+
+
+        .subtitle {
+            color: #777;
+
+            font-size: 11px;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 60px;
+        }
+
+
+        /* =========================================
+           STATUS
+        ========================================= */
+
+        .status {
+            font-size: 12px;
+
+            letter-spacing: 3px;
+
+            color: #aaa;
+
+            margin-bottom: 18px;
+        }
+
+
+        /* =========================================
+           PROGRESS BAR
+        ========================================= */
+
+        .progress-wrapper {
+            width: 100%;
+            height: 4px;
+
+            background: #181818;
+
+            border: 1px solid #292929;
+
+            overflow: hidden;
+        }
+
+
+        .progress-bar {
+            width: 0%;
+
+            height: 100%;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 0 12px rgba(255,255,255,0.7);
+
+            transition: width 0.1s linear;
+        }
+
+
+        /* =========================================
+           PERCENTAGE
+        ========================================= */
+
+        .percentage {
+            margin-top: 15px;
+
+            color: #666;
+
+            font-size: 11px;
+
+            letter-spacing: 2px;
+        }
+
+
+        /* =========================================
+           SYSTEM TEXT
+        ========================================= */
+
+        .system-text {
+            margin-top: 50px;
+
+            color: #444;
+
+            font-size: 9px;
+
+            letter-spacing: 2px;
+
+            min-height: 15px;
+        }
+
+
+        /* =========================================
+           CORNER DECORATION
+        ========================================= */
+
+        .corner {
+            position: fixed;
+
+            width: 35px;
+            height: 35px;
+
+            border-color: #333;
+            border-style: solid;
+        }
+
+        .corner.top-left {
+            top: 25px;
+            left: 25px;
+
+            border-width: 1px 0 0 1px;
+        }
+
+        .corner.top-right {
+            top: 25px;
+            right: 25px;
+
+            border-width: 1px 1px 0 0;
+        }
+
+        .corner.bottom-left {
+            bottom: 25px;
+            left: 25px;
+
+            border-width: 0 0 1px 1px;
+        }
+
+        .corner.bottom-right {
+            bottom: 25px;
+            right: 25px;
+
+            border-width: 0 1px 1px 0;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- Decorative corners -->
+
+    <div class="corner top-left"></div>
+    <div class="corner top-right"></div>
+    <div class="corner bottom-left"></div>
+    <div class="corner bottom-right"></div>
+
+
+    <main class="loading-container">
+
+        <div class="logo">
+            MOTHERSHIP
+        </div>
+
+        <div class="subtitle">
+            SYSTEM INITIALIZATION
+        </div>
+
+
+        <div class="status" id="status">
+            INITIALIZING...
+        </div>
+
+
+        <div class="progress-wrapper">
+
+            <div
+                class="progress-bar"
+                id="progressBar"
+            ></div>
+
+        </div>
+
+
+        <div
+            class="percentage"
+            id="percentage"
+        >
+            0%
+        </div>
+
+
+        <div
+            class="system-text"
+            id="systemText"
+        >
+            ESTABLISHING SECURE CONNECTION
+        </div>
+
+    </main>
+
+
+    <script>
+
+        /* =========================================
+           MOTHERSHIP LOADING SYSTEM
+        ========================================= */
+
+        const progressBar =
+            document.getElementById("progressBar");
+
+        const percentage =
+            document.getElementById("percentage");
+
+        const status =
+            document.getElementById("status");
+
+        const systemText =
+            document.getElementById("systemText");
+
+
+        const messages = [
+            "INITIALIZING...",
+            "LOADING DATABASE...",
+            "CONNECTING TO MOTHERSHIP...",
+            "VERIFYING SYSTEM...",
+            "LOADING INVENTORY...",
+            "SYSTEM READY"
+        ];
+
+
+        let progress = 0;
+
+
+        const loadingInterval =
+            setInterval(function () {
+
+                progress += 1;
+
+
+                progressBar.style.width =
+                    progress + "%";
+
+
+                percentage.textContent =
+                    progress + "%";
+
+
+                /* Change status text */
+
+                if (progress < 20) {
+
+                    status.textContent =
+                        messages[0];
+
+                    systemText.textContent =
+                        "ESTABLISHING SECURE CONNECTION";
+
+                } else if (progress < 40) {
+
+                    status.textContent =
+                        messages[1];
+
+                    systemText.textContent =
+                        "ACCESSING DATABASE";
+
+                } else if (progress < 60) {
+
+                    status.textContent =
+                        messages[2];
+
+                    systemText.textContent =
+                        "CONNECTING TO MAINFRAME";
+
+                } else if (progress < 80) {
+
+                    status.textContent =
+                        messages[3];
+
+                    systemText.textContent =
+                        "VERIFYING SYSTEM INTEGRITY";
+
+                } else if (progress < 100) {
+
+                    status.textContent =
+                        messages[4];
+
+                    systemText.textContent =
+                        "PREPARING INVENTORY";
+
+                } else {
+
+                    status.textContent =
+                        messages[5];
+
+                    systemText.textContent =
+                        "ACCESS GRANTED";
+
+                }
+
+
+                /* =================================
+                   FINISH
+                ================================= */
+
+                if (progress >= 100) {
+
+                    clearInterval(
+                        loadingInterval
+                    );
+
+
+                    setTimeout(function () {
+
+                        window.location.href =
+                            "home.html";
+
+                    }, 700);
+
+                }
+
+            }, 35);
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MOTHERSHIP | Operator Registration</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .register-page {
+            width: min(1100px, 92%);
+            margin: 0 auto;
+            padding: 70px 0;
+        }
+
+        .register-header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .register-header h1 {
+            margin: 0;
+            font-size: clamp(38px, 6vw, 70px);
+            letter-spacing: 8px;
+            text-shadow:
+                0 0 10px rgba(255,255,255,.8),
+                0 0 30px rgba(255,255,255,.25);
+        }
+
+        .register-header p {
+            margin-top: 18px;
+            color: #777;
+            font-size: 11px;
+            letter-spacing: 4px;
+        }
+
+        .registration-box {
+            border: 1px solid rgba(255,255,255,.18);
+            background: rgba(255,255,255,.025);
+            padding: 35px;
+            box-shadow: 0 0 40px rgba(255,255,255,.025);
+        }
+
+        .system-status {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(255,255,255,.12);
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: #777;
+        }
+
+        .status-online {
+            color: #fff;
+        }
+
+        .status-dot {
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            margin-right: 8px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 0 10px #fff;
+        }
+
+        .selection-title {
+            margin-bottom: 25px;
+        }
+
+        .selection-title h2 {
+            margin: 0;
+            font-size: 20px;
+            letter-spacing: 4px;
+        }
+
+        .selection-title p {
+            margin-top: 10px;
+            color: #666;
+            font-size: 11px;
+            letter-spacing: 2px;
+        }
+
+        /* ACCOUNT FORM */
+
+        .account-form {
+            margin-bottom: 35px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(255,255,255,.1);
+        }
+
+        .account-form label {
+            display: block;
+            margin-bottom: 8px;
+            color: #888;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        .account-form input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 14px;
+            margin-bottom: 18px;
+            background: rgba(255,255,255,.03);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,.18);
+            outline: none;
+            font-family: "Orbitron", sans-serif;
+        }
+
+        .account-form input:focus {
+            border-color: rgba(255,255,255,.6);
+            box-shadow: 0 0 15px rgba(255,255,255,.08);
+        }
+
+        .code-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .code-option {
+            position: relative;
+            width: 100%;
+            min-height: 145px;
+            margin: 0;
+            padding: 25px;
+            text-align: left;
+            background: rgba(255,255,255,.02);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,.15);
+            cursor: pointer;
+            font-family: "Orbitron", sans-serif;
+            transition: .25s ease;
+        }
+
+        .code-option:hover {
+            background: rgba(255,255,255,.07);
+            border-color: rgba(255,255,255,.55);
+            transform: translateY(-3px);
+        }
+
+        .code-option.selected {
+            background: rgba(255,255,255,.1);
+            border-color: #fff;
+            box-shadow:
+                0 0 20px rgba(255,255,255,.15),
+                inset 0 0 20px rgba(255,255,255,.03);
+            transform: translateY(-3px);
+        }
+
+        .code-symbol {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .code-name {
+            display: block;
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .code-role {
+            display: block;
+            margin-top: 10px;
+            color: #777;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        .code-access {
+            display: block;
+            margin-top: 16px;
+            color: #aaa;
+            font-size: 9px;
+            letter-spacing: 1.5px;
+        }
+
+        .green-locked {
+            margin-top: 18px;
+            padding: 22px 25px;
+            border: 1px solid rgba(255,255,255,.08);
+            background: rgba(255,255,255,.015);
+            opacity: .55;
+        }
+
+        .green-locked .code-name {
+            color: #888;
+        }
+
+        .green-locked .lock {
+            float: right;
+            font-size: 18px;
+        }
+
+        .register-button {
+            display: block;
+            width: 100%;
+            margin-top: 30px;
+            padding: 16px;
+            background: #fff;
+            color: #000;
+            border: none;
+            cursor: pointer;
+            font-family: "Orbitron", sans-serif;
+            font-weight: 700;
+            letter-spacing: 3px;
+            transition: .2s ease;
+        }
+
+        .register-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255,255,255,.12);
+        }
+
+        .register-message {
+            min-height: 22px;
+            margin-top: 25px;
+            text-align: center;
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: #888;
+        }
+
+        .system-footer {
+            margin-top: 35px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,.1);
+            text-align: center;
+            color: #555;
+            font-size: 9px;
+            letter-spacing: 3px;
+        }
+
+        .confirmation {
+            display: none;
+            text-align: center;
+            padding: 35px 10px;
+        }
+
+        .confirmation.visible {
+            display: block;
+        }
+
+        .confirmation-icon {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .confirmation h2 {
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+        }
+
+        .confirmation p {
+            color: #777;
+            font-size: 11px;
+            letter-spacing: 2px;
+            line-height: 1.8;
+        }
+
+        .enter-system {
+            margin-top: 25px;
+            padding: 14px 25px;
+            background: #fff;
+            color: #000;
+            border: none;
+            cursor: pointer;
+            font-family: "Orbitron", sans-serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 700px) {
+
+            .register-page {
+                padding: 40px 0;
+            }
+
+            .registration-box {
+                padding: 20px;
+            }
+
+            .code-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .system-status {
+                flex-direction: column;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="page">
+
+    <header class="topbar">
+
+        <div class="brand">
+            MOTHERSHIP / REGISTRATION
+        </div>
+
+        <div class="request-id">
+            NEW OPERATOR
+        </div>
+
+    </header>
+
+
+    <main class="register-page">
+
+        <div class="register-header">
+
+            <h1>OPERATOR REGISTRATION</h1>
+
+            <p>
+                MOTHERSHIP CLASSIFICATION NETWORK
+            </p>
+
+        </div>
+
+
+        <!-- REGISTRATION -->
+
+        <section
+            class="registration-box"
+            id="registrationBox"
+        >
+
+            <div class="system-status">
+
+                <span>SYSTEM STATUS</span>
+
+                <span class="status-online">
+
+                    <span class="status-dot"></span>
+
+                    ONLINE
+
+                </span>
+
+            </div>
+
+
+            <!-- ACCOUNT FORM -->
+
+            <form id="registerForm">
+
+                <div class="account-form">
+
+                    <label for="registerUsername">
+                        OPERATOR NAME
+                    </label>
+
+                    <input
+                        type="text"
+                        id="registerUsername"
+                        placeholder="ENTER OPERATOR NAME"
+                        autocomplete="username"
+                        required
+                    >
+
+
+                    <label for="registerPassword">
+                        ACCESS PASSWORD
+                    </label>
+
+                    <input
+                        type="password"
+                        id="registerPassword"
+                        placeholder="CREATE PASSWORD"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- CODE SELECTION -->
+
+                <div class="selection-title">
+
+                    <h2>
+                        SELECT OPERATOR CODE
+                    </h2>
+
+                    <p>
+                        SELECT ONE AVAILABLE CLASSIFICATION
+                    </p>
+
+                </div>
+
+
+                <div class="code-grid">
+
+                    <!-- BLUE -->
+
+                    <button
+                        type="button"
+                        class="code-option"
+                        data-code="blue"
+                    >
+
+                        <div class="code-symbol">
+                            🔵
+                        </div>
+
+                        <span class="code-name">
+                            CODE BLUE
+                        </span>
+
+                        <span class="code-role">
+                            OPERATIONS / LOGISTICS
+                        </span>
+
+                        <span class="code-access">
+                            SYSTEM OPERATIONS · MISSIONS · PROFILE
+                        </span>
+
+                    </button>
+
+
+                    <!-- RED -->
+
+                    <button
+                        type="button"
+                        class="code-option"
+                        data-code="red"
+                    >
+
+                        <div class="code-symbol">
+                            🔴
+                        </div>
+
+                        <span class="code-name">
+                            CODE RED
+                        </span>
+
+                        <span class="code-role">
+                            FIELD OPERATOR
+                        </span>
+
+                        <span class="code-access">
+                            INVENTORY · MISSIONS · PROFILE
+                        </span>
+
+                    </button>
+
+
+                    <!-- PURPLE -->
+
+                    <button
+                        type="button"
+                        class="code-option"
+                        data-code="purple"
+                    >
+
+                        <div class="code-symbol">
+                            🟣
+                        </div>
+
+                        <span class="code-name">
+                            CODE PURPLE
+                        </span>
+
+                        <span class="code-role">
+                            INTELLIGENCE
+                        </span>
+
+                        <span class="code-access">
+                            TERMINAL · INTEL · MISSIONS · PROFILE
+                        </span>
+
+                    </button>
+
+
+                    <!-- YELLOW -->
+
+                    <button
+                        type="button"
+                        class="code-option"
+                        data-code="yellow"
+                    >
+
+                        <div class="code-symbol">
+                            🟡
+                        </div>
+
+                        <span class="code-name">
+                            CODE YELLOW
+                        </span>
+
+                        <span class="code-role">
+                            SUPPORT
+                        </span>
+
+                        <span class="code-access">
+                            INTEL · MISSIONS · PROFILE
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+                <!-- GREEN LOCKED -->
+
+                <div class="green-locked">
+
+                    <span class="lock">
+                        🔒
+                    </span>
+
+                    <div class="code-symbol">
+                        🟢
+                    </div>
+
+                    <span class="code-name">
+                        CODE GREEN
+                    </span>
+
+                    <span class="code-role">
+                        ADMINISTRATOR / OWNER
+                    </span>
+
+                    <span class="code-access">
+                        ADMINISTRATOR ASSIGNMENT ONLY
+                    </span>
+
+                </div>
+
+
+                <!-- SAVED CODE -->
+
+                <input
+                    type="hidden"
+                    id="selectedCode"
+                    name="selectedCode"
+                >
+
+
+                <button
+                    type="submit"
+                    class="register-button"
+                >
+                    CREATE OPERATOR PROFILE
+                </button>
+
+
+                <div
+                    id="registerMessage"
+                    class="register-message"
+                ></div>
+
+            </form>
+
+        </section>
+
+
+        <!-- CONFIRMATION -->
+
+        <section
+            id="confirmation"
+            class="registration-box confirmation"
+        >
+
+            <div class="confirmation-icon">
+                ✓
+            </div>
+
+            <div class="section-label">
+                MOTHERSHIP SYSTEM
+            </div>
+
+            <h2>
+                CLASSIFICATION ASSIGNED
+            </h2>
+
+            <p>
+                YOUR OPERATOR CODE IS:
+            </p>
+
+            <h2 id="assignedCode">
+                ---
+            </h2>
+
+            <p>
+                YOUR SYSTEM PERMISSIONS HAVE BEEN INITIALIZED.
+            </p>
+
+            <button
+                type="button"
+                id="enterSystem"
+                class="enter-system"
+            >
+                ENTER MOTHERSHIP
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        MOTHERSHIP SYSTEM · FICTIONAL GAME INTERFACE
+    </footer>
+
+</div>
+
+
+<script src="permissions.js"></script>
+<script src="register.js"></script>
+
+</body>
+</html>

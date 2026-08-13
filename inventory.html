@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MOTHERSHIP | Inventory</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-mothership-page="inventory"></body>
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            MOTHERSHIP
+        </div>
+
+        <div class="menu">
+
+            <a href="home.html">DASHBOARD</a>
+
+            <a href="inventory.html">
+                INVENTORY
+            </a>
+
+            <a href="intel.html">
+                INTEL
+            </a>
+
+            <a href="profile.html">
+                PROFILE
+            </a>
+
+            <a href="terminal.html">
+                TERMINAL
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- INVENTORY -->
+
+    <main class="inventory">
+
+        <h1>
+            INVENTORY
+        </h1>
+
+        <p>
+            MOTHERSHIP ITEM DATABASE
+        </p>
+
+
+        <!-- SEARCH -->
+
+        <input
+            type="text"
+            class="search"
+            placeholder="SEARCH INVENTORY..."
+            autocomplete="off"
+        >
+
+
+        <!-- CATEGORIES -->
+
+        <div class="categories">
+
+            <button
+                type="button"
+                data-category="All"
+                class="active"
+            >
+                ALL
+            </button>
+
+            <button
+                type="button"
+                data-category="Rifle"
+            >
+                RIFLES
+            </button>
+
+            <button
+                type="button"
+                data-category="Pistol"
+            >
+                PISTOLS
+            </button>
+
+            <button
+                type="button"
+                data-category="SMG"
+            >
+                SMG
+            </button>
+
+            <button
+                type="button"
+                data-category="Shotgun"
+            >
+                SHOTGUNS
+            </button>
+
+            <button
+                type="button"
+                data-category="Sniper"
+            >
+                SNIPERS
+            </button>
+
+        </div>
+
+
+        <!-- ITEM CARDS -->
+
+        <div
+            id="cards"
+            class="cards"
+        >
+
+            <div class="no-results">
+                LOADING DATABASE...
+            </div>
+
+        </div>
+
+    </main>
+
+
+<script src="data/shopItems.js"></script>
+<script src="data/guns.js"></script>
+<script src="inventory.js"></script>
+<script src="script.js"></script>
+<script src="permissions.js"></script>
+</body>
+</html>

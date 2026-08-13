@@ -1,0 +1,118 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:#050505;
+color:white;
+font-family:"Orbitron",sans-serif;
+}
+
+.topbar{
+height:75px;
+background:#080808;
+border-bottom:1px solid #222;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 35px;
+}
+
+.logo{
+font-size:24px;
+font-weight:900;
+letter-spacing:4px;
+}
+
+nav{
+display:flex;
+gap:20px;
+}
+
+nav a{
+text-decoration:none;
+color:#666;
+font-size:12px;
+}
+
+nav a:hover,
+nav a.active{
+color:white;
+}
+
+.container{
+width:95%;
+max-width:1500px;
+margin:30px auto;
+}
+
+.container h1{
+font-size:34px;
+margin-bottom:10px;
+}
+
+.container p{
+color:#666;
+margin-bottom:25px;
+}
+
+#chatFeed{
+height:700px;
+overflow-y:auto;
+background:#080808;
+border:1px solid #222;
+border-radius:20px;
+padding:20px;
+box-shadow:
+0 0 25px rgba(0,255,120,.08);
+}
+
+.message{
+padding:12px;
+margin-bottom:10px;
+background:#101010;
+font-size:13px;
+border-left:4px solid white;
+animation:fade .4s ease;
+}
+
+.green{
+border-color:#00ff66;
+}
+
+.blue{
+border-color:#00aaff;
+}
+
+.purple{
+border-color:#bb55ff;
+}
+
+.yellow{
+border-color:#ffd400;
+}
+
+.red{
+border-color:#ff3333;
+}
+
+.time{
+color:#888;
+margin-right:8px;
+}
+
+@keyframes fade{
+
+from{
+opacity:0;
+transform:translateY(10px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}

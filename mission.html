@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>MOTHERSHIP | Missions</title>
+
+    <!-- Orbitron Font -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+<body data-mothership-page="missions"></body>
+
+<body>
+
+
+<!-- =========================================
+     NAVBAR
+========================================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        MOTHERSHIP
+    </div>
+
+
+    <div class="active-code-display">
+
+        CODE:
+        <span id="nav-code">
+            GREEN
+        </span>
+
+    </div>
+
+
+    <div class="menu">
+
+        <a href="home.html">
+            Home
+        </a>
+
+      <a href="mission.html"
+   data-permission="missions">
+    Missions
+</a>
+
+        <a href="intel.html">
+            Intel
+        </a>
+
+        <a href="mission.html">
+            Missions
+        </a>
+
+        <a href="profile.html">
+            Profile
+        </a>
+
+        <a href="terminal.html">
+            Terminal
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================================
+     MISSION CONTROL
+========================================= -->
+
+<main class="mission-page">
+
+    <h1>
+        MISSION CONTROL
+    </h1>
+
+
+    <p class="mission-subtitle">
+        MOTHERSHIP OPERATIONS DATABASE
+    </p>
+
+
+
+    <!-- =====================================
+         MISSION STATUS
+    ====================================== -->
+
+    <section class="mission-status">
+
+        <div>
+
+            <span>
+                ACTIVE MISSIONS
+            </span>
+
+            <strong id="active-missions">
+                00
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                COMPLETED
+            </span>
+
+            <strong id="completed-missions">
+                00
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                CLEARANCE
+            </span>
+
+            <strong>
+                OMEGA
+            </strong>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         FEATURED MISSION
+    ====================================== -->
+
+    <section class="mission-card">
+
+        <div class="mission-header">
+
+            <div>
+
+                <span class="mission-id">
+                    MISSION // MS-001
+                </span>
+
+                <h2>
+                    OPERATION: NIGHTFALL
+                </h2>
+
+            </div>
+
+
+            <span
+                id="mission-badge"
+                class="mission-status-badge">
+
+                AVAILABLE
+
+            </span>
+
+        </div>
+
+
+        <div class="mission-divider"></div>
+
+
+        <div class="mission-info">
+
+            <div>
+
+                <span>
+                    LOCATION
+                </span>
+
+                <strong>
+                    CLASSIFIED
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    PRIORITY
+                </span>
+
+                <strong>
+                    HIGH
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    STATUS
+                </span>
+
+                <strong id="mission-status">
+                    AVAILABLE
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="mission-briefing">
+
+            <h3>
+                MISSION BRIEFING
+            </h3>
+
+            <p>
+                An encrypted signal has been detected
+                from an abandoned MOTHERSHIP relay
+                station.
+            </p>
+
+            <p>
+                Recover the missing data fragment
+                and return it to the command network.
+            </p>
+
+        </div>
+
+
+        <div class="mission-objective">
+
+            <h3>
+                OBJECTIVE
+            </h3>
+
+            <p>
+                Recover the encrypted data fragment.
+            </p>
+
+        </div>
+
+
+        <button
+            id="viewMissionBtn"
+            class="mission-button">
+
+            VIEW MISSION
+
+        </button>
+
+    </section>
+
+
+
+    <!-- =====================================
+         MISSION OUTPUT
+    ====================================== -->
+
+    <section
+        id="mission-output"
+        class="mission-output">
+
+    </section>
+
+
+
+    <!-- =====================================
+         MISSION DATABASE
+    ====================================== -->
+
+    <section class="mission-database">
+
+        <h2>
+            MISSION DATABASE
+        </h2>
+
+
+        <p class="mission-subtitle">
+            AVAILABLE MOTHERSHIP OPERATIONS
+        </p>
+
+
+        <!-- JavaScript creates missions here -->
+
+        <div id="mission-list"></div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================================
+     MISSION ACCESS OVERLAY
+========================================= -->
+
+<div
+    id="missionOverlay"
+    class="mission-overlay"
+    style="display: none;">
+
+    <div class="mission-access-panel">
+
+
+        <div class="access-header">
+
+            MOTHERSHIP // MISSION ACCESS
+
+        </div>
+
+
+        <div class="access-status">
+
+            ACCESS GRANTED
+
+        </div>
+
+
+        <h2 id="accessMissionName">
+
+            OPERATION: NIGHTFALL
+
+        </h2>
+
+
+        <p id="accessMissionId">
+
+            MISSION ID: MS-001
+
+        </p>
+
+
+        <div class="access-line"></div>
+
+
+        <p>
+            Mission data has been authenticated.
+        </p>
+
+
+        <p>
+            Operator authorization confirmed.
+        </p>
+
+
+        <div class="access-actions">
+
+            <button id="startMissionBtn">
+
+                ACCEPT MISSION
+
+            </button>
+
+
+            <button id="closeMissionBtn">
+
+                CLOSE
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script src="data/mission.js"></script>
+
+<script src="mission.js"></script>
+<script src="permissions.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MOTHERSHIP | Transaction Terminal</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- USE YOUR MAIN CSS ONLY -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+
+    <!-- =================================================
+         TOP BAR
+    ================================================== -->
+
+    <header class="topbar">
+
+        <div class="brand">
+            MOTHERSHIP / TRANSACTION
+        </div>
+
+        <div class="request-id">
+            REQUEST-01
+        </div>
+
+    </header>
+
+
+    <main>
+
+
+        <!-- =================================================
+             TITLE
+        ================================================== -->
+
+        <div class="title-area">
+
+            <h1>
+                TRANSACTION TERMINAL
+            </h1>
+
+            <p>
+                FICTIONAL GAME INTERFACE · NO REAL TRANSACTION
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             CHECKOUT
+        ================================================== -->
+
+        <section
+            id="checkoutPanel"
+            class="checkout-panel"
+        >
+
+
+            <!-- =============================================
+                 SELECTED ITEM
+            ============================================== -->
+
+            <div class="item-panel">
+
+                <div class="section-label">
+                    SELECTED ITEM
+                </div>
+
+
+                <div class="item-image">
+
+                    <img
+                        id="itemImage"
+                        src=""
+                        alt="Selected Item"
+                    >
+
+                    <div id="imageFallback">
+                        IMAGE UNAVAILABLE
+                    </div>
+
+                </div>
+
+
+                <h2 id="itemName">
+                    LOADING...
+                </h2>
+
+
+                <div class="item-info">
+
+
+                    <div>
+
+                        <span>
+                            CATEGORY
+                        </span>
+
+                        <strong id="itemCategory">
+                            ---
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            MANUFACTURER
+                        </span>
+
+                        <strong id="itemManufacturer">
+                            ---
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            FICTIONAL VALUE
+                        </span>
+
+                        <strong id="itemPrice">
+                            CLASSIFIED
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =============================================
+                 TRANSACTION DETAILS
+            ============================================== -->
+
+            <div class="transaction-panel">
+
+                <div class="section-label">
+                    TRANSACTION DETAILS
+                </div>
+
+
+                <!-- TRANSACTION METHOD -->
+
+                <div class="form-group">
+
+                    <label for="paymentMethod">
+                        TRANSACTION METHOD
+                    </label>
+
+                    <select id="paymentMethod">
+
+                        <option value="">
+                            SELECT METHOD
+                        </option>
+
+                        <option value="simulation">
+                            SYSTEM SIMULATION
+                        </option>
+
+                        <option value="credits">
+                            MOTHERSHIP CREDITS
+                        </option>
+
+                        <option value="offline">
+                            OFFLINE SIMULATION
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- ADDRESS -->
+
+                <div class="form-group">
+
+                    <label for="address">
+                        DELIVERY ADDRESS
+                    </label>
+
+                    <input
+                        type="text"
+                        id="address"
+                        placeholder="ENTER ADDRESS"
+                        autocomplete="street-address"
+                    >
+
+                </div>
+
+
+
+                <!-- CITY + POSTAL -->
+
+                <div class="address-row">
+
+
+                    <div class="form-group">
+
+                        <label for="city">
+                            CITY
+                        </label>
+
+                        <input
+                            type="text"
+                            id="city"
+                            placeholder="CITY"
+                            autocomplete="address-level2"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="postal">
+                            POSTAL CODE
+                        </label>
+
+                        <input
+                            type="text"
+                            id="postal"
+                            placeholder="POSTAL CODE"
+                            autocomplete="postal-code"
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- COUNTRY -->
+
+                <div class="form-group">
+
+                    <label for="country">
+                        COUNTRY
+                    </label>
+
+                    <select id="country">
+
+                        <option value="">
+                            SELECT COUNTRY
+                        </option>
+
+                        <option value="india">
+                            INDIA
+                        </option>
+
+                        <option value="usa">
+                            UNITED STATES
+                        </option>
+
+                        <option value="uk">
+                            UNITED KINGDOM
+                        </option>
+
+                        <option value="other">
+                            OTHER
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- BUTTONS -->
+
+                <div class="transaction-buttons">
+
+                    <button
+                        type="button"
+                        id="returnButton"
+                        class="return-button"
+                    >
+                        ← RETURN
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="submitButton"
+                        class="confirm-button"
+                    >
+                        SUBMIT REQUEST
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             LOADING SCREEN
+        ================================================== -->
+
+        <section
+            id="loadingScreen"
+            class="system-screen hidden"
+        >
+
+            <div class="loading-circle"></div>
+
+
+            <div class="section-label">
+                MOTHERSHIP SYSTEM
+            </div>
+
+
+            <h2>
+                PROCESSING REQUEST
+            </h2>
+
+
+            <p id="loadingText">
+                VERIFYING TRANSACTION DATA...
+            </p>
+
+        </section>
+
+
+
+        <!-- =================================================
+             RESTRICTED SCREEN
+        ================================================== -->
+
+        <section
+            id="restrictedScreen"
+            class="system-screen hidden"
+        >
+
+
+            <div class="restricted-icon">
+                !
+            </div>
+
+
+            <div class="section-label">
+                MOTHERSHIP SYSTEM
+            </div>
+
+
+            <h2>
+                DELIVERY RESTRICTED
+            </h2>
+
+
+            <p>
+                THIS FICTIONAL DELIVERY IS NOT AVAILABLE
+                IN THE SELECTED COUNTRY.
+            </p>
+
+
+            <div class="restriction-code">
+                REGION ACCESS CODE: RESTRICTED
+            </div>
+
+
+            <button
+                id="backInventory"
+                class="confirm-button"
+                type="button"
+            >
+                RETURN TO INVENTORY
+            </button>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =================================================
+         FOOTER
+    ================================================== -->
+
+    <footer>
+
+        MOTHERSHIP SYSTEM · FICTIONAL GAME INTERFACE
+
+    </footer>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+====================================================== -->
+
+<script src="data/guns.js"></script>
+<script src="order.js"></script>
+
+
+</body>
+
+</html>

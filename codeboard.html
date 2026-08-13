@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MOTHERSHIP | Global Operator Network</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&display=swap"
+      rel="stylesheet">
+
+<link rel="stylesheet" href="codeboard.css">
+
+<link
+rel="stylesheet"
+href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+
+<header class="topbar">
+
+    <div class="logo">
+        MOTHERSHIP
+    </div>
+
+    <nav>
+
+        <a href="home.html">
+            Dashboard
+        </a>
+
+        <a href="intel.html">
+            Intel
+        </a>
+
+        <a href="mission.html">
+            Missions
+        </a>
+
+        <a href="profile.html">
+            Profile
+        </a>
+
+        <a href="terminal.html">
+            Terminal
+        </a>
+
+        <a href="codeboard.html" class="active">
+            Code Board
+        </a>
+
+    </nav>
+
+</header>
+
+<!-- MAIN -->
+
+<main class="container">
+
+    <!-- TITLE -->
+
+    <section class="hero">
+
+        <h1>
+            GLOBAL OPERATOR NETWORK
+        </h1>
+
+        <p>
+            LIVE WORLDWIDE OPERATOR TRACKING SYSTEM
+        </p>
+
+    </section>
+
+    <!-- STATS -->
+
+    <section class="stats-grid">
+
+        <div class="stat-card">
+            <h2 id="totalOperators">130</h2>
+            <span>TOTAL OPERATORS</span>
+        </div>
+
+        <div class="stat-card green">
+            <h2 id="greenCount">8</h2>
+            <span>CODE GREEN</span>
+        </div>
+
+        <div class="stat-card blue">
+            <h2 id="blueCount">30</h2>
+            <span>CODE BLUE</span>
+        </div>
+
+        <div class="stat-card purple">
+            <h2 id="purpleCount">31</h2>
+            <span>CODE PURPLE</span>
+        </div>
+
+        <div class="stat-card yellow">
+            <h2 id="yellowCount">31</h2>
+            <span>CODE YELLOW</span>
+        </div>
+
+        <div class="stat-card red">
+            <h2 id="redCount">30</h2>
+            <span>CODE RED</span>
+        </div>
+
+    </section>
+<div class="radar-ring"></div>
+<div class="network-bar">
+
+<div>🟢 8 GREEN</div>
+
+<div>🔵 30 BLUE</div>
+
+<div>🟣 31 PURPLE</div>
+
+<div>🟡 31 YELLOW</div>
+
+<div>🔴 30 RED</div>
+
+</div>
+    <!-- MAP -->
+
+    <!-- MAP -->
+
+<section class="network-panel">
+
+    <div class="panel-header">
+
+        <div>
+
+            <h2>🌍 GLOBAL NETWORK MAP</h2>
+
+            <p>CLICK ANY OPERATOR TO VIEW DETAILS</p>
+
+        </div>
+
+        <div class="map-status">
+
+            <span class="status-dot"></span>
+
+            NETWORK ONLINE
+
+        </div>
+
+    </div>
+
+    <div class="map-wrapper">
+
+        <div id="networkMap"></div>
+
+    </div>
+
+</section>
+
+    <!-- LEGEND -->
+
+    <section class="legend-panel">
+
+        <div class="legend-title">
+            OPERATOR CLASSIFICATION
+        </div>
+
+        <div class="legend-grid">
+
+            <div class="legend-item">
+                <span class="legend-dot green-dot"></span>
+                CODE GREEN
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-dot blue-dot"></span>
+                CODE BLUE
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-dot purple-dot"></span>
+                CODE PURPLE
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-dot yellow-dot"></span>
+                CODE YELLOW
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-dot red-dot"></span>
+                CODE RED
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<!-- LEAFLET -->
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- MOTHERSHIP MAP -->
+
+<script src="codeboard.js"></script>
+
+</body>
+
+</html>

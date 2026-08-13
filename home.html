@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>MOTHERSHIP</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     NAVBAR
+========================================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        MOTHERSHIP
+    </div>
+
+
+    <div class="active-code-display">
+
+        CODE:
+        <span id="nav-code">
+            ---
+        </span>
+
+    </div>
+
+
+    <div class="menu">
+
+        <a href="home.html">
+            Dashboard
+        </a>
+
+        <a href="inventory.html">
+            Inventory
+        </a>
+
+        <a href="intel.html">
+            Intel
+        </a>
+
+        <a href="mission.html">
+            Missions
+        </a>
+
+        <a href="profile.html">
+            Profile
+        </a>
+
+        <a href="terminal.html">
+            Terminal
+        </a>
+
+        <a href="codeboard.html">
+            Code Board
+        </a>
+<a href="livechat.html">
+    Live Chat
+</a>
+    </div>
+
+</nav>
+
+
+
+<!-- =========================================
+     ACTIVE MISSION
+========================================= -->
+
+<div class="active-mission-panel">
+
+    <div class="mission-panel-header">
+
+        <span>
+            ACTIVE MISSION
+        </span>
+
+        <span id="home-mission-status">
+            OFFLINE
+        </span>
+
+    </div>
+
+
+    <h2 id="home-mission-id">
+        NO ACTIVE MISSION
+    </h2>
+
+
+    <p id="home-mission-name">
+        Awaiting mission assignment...
+    </p>
+
+
+    <button
+        type="button"
+        onclick="window.location.href='mission.html'">
+
+        MISSION CONTROL
+
+    </button>
+
+</div>
+
+
+
+<!-- =========================================
+     HERO
+========================================= -->
+
+<section class="hero">
+
+    <h1>
+        WELCOME BACK
+    </h1>
+
+    <p>
+        Access Granted
+    </p>
+
+    <p>
+        OPERATOR:
+        <strong data-operator-name>
+            ---
+        </strong>
+    </p>
+
+</section>
+
+
+
+<!-- =========================================
+     STATS
+========================================= -->
+
+<section class="stats">
+
+    <div class="stat-card">
+
+        <h2 id="items">
+            0
+        </h2>
+
+        <p>
+            Display Items
+        </p>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <h2 id="categories">
+            0
+        </h2>
+
+        <p>
+            Categories
+        </p>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <h2 id="status">
+            100%
+        </h2>
+
+        <p>
+            System Status
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     COMMAND CENTER
+========================================= -->
+
+<section class="command-center">
+
+    <h2>
+        COMMAND CENTER
+    </h2>
+
+
+    <div class="command-grid">
+
+        <div class="command-card">
+
+            <h3>
+                🤖 AI CORE
+            </h3>
+
+            <p>
+                ONLINE
+            </p>
+
+        </div>
+
+
+        <div class="command-card">
+
+            <h3>
+                ⚡ POWER CORE
+            </h3>
+
+            <p>
+                98%
+            </p>
+
+        </div>
+
+
+        <div class="command-card">
+
+            <h3>
+                🛰 COMMUNICATION
+            </h3>
+
+            <p>
+                CONNECTED
+            </p>
+
+        </div>
+
+
+        <div class="command-card">
+
+            <h3>
+                🔒 SECURITY
+            </h3>
+
+            <p>
+                ACTIVE
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     MOTHERSHIP COMMUNICATION
+========================================= -->
+
+<section class="mothership-chat">
+
+    <div class="chat-panel-header">
+
+        <div>
+
+            <h2>
+                COMMAND NETWORK
+            </h2>
+
+            <p>
+                MOTHERSHIP COMMUNICATION CHANNEL
+            </p>
+
+        </div>
+
+
+        <div class="chat-online">
+
+            <span class="online-dot"></span>
+
+            <span id="onlineCount">
+                0
+            </span>
+
+            ONLINE
+
+        </div>
+
+    </div>
+
+
+
+    <div class="chat-body">
+
+
+        <!-- OPERATORS -->
+
+        <aside class="chat-operators">
+
+            <h3>
+                OPERATORS
+            </h3>
+
+
+            <div id="onlineUsers">
+
+
+                <button
+                    class="operator operator-selected"
+                    data-operator="NOVA">
+
+                    <span class="online-dot"></span>
+
+                    NOVA
+
+                    <small>
+                        [AI]
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="operator"
+                    data-operator="RAVEN">
+
+                    <span class="online-dot"></span>
+
+                    RAVEN
+
+                    <small>
+                        [AI]
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="operator"
+                    data-operator="ECHO">
+
+                    <span class="online-dot"></span>
+
+                    ECHO
+
+                    <small>
+                        [AI]
+                    </small>
+
+                </button>
+
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- CHAT -->
+
+        <div class="chat-window">
+
+
+            <div class="chat-header">
+
+                <strong>
+                    NOVA
+                </strong>
+
+                <span>
+                    ● ONLINE
+                </span>
+
+            </div>
+
+
+            <div
+                id="messages"
+                class="messages">
+
+                <div class="chat-message received">
+
+                    <div class="message-name">
+
+                        NOVA
+                        <small>
+                            [AI]
+                        </small>
+
+                    </div>
+
+
+                    <div class="message-text">
+
+                        Hey! How's everything going?
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="typing"
+                class="typing">
+            </div>
+
+
+            <div class="chat-input">
+
+                <input
+                    id="messageInput"
+                    type="text"
+                    placeholder="Message NOVA..."
+                    autocomplete="off">
+
+
+                <button
+                    id="sendButton"
+                    type="button">
+
+                    SEND
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     SCRIPTS
+========================================= -->
+
+<script src="permissions.js"></script>
+
+<script src="script.js"></script>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script src="messages.js"></script>
+
+
+<script>
+
+/* =========================================
+   LOAD SAVED OPERATOR CODE
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        const operator =
+            getCurrentOperator();
+
+
+        if (!operator) {
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        /* -----------------------------
+           NAV CODE
+        ----------------------------- */
+
+        const navCode =
+            document.getElementById(
+                "nav-code"
+            );
+
+
+        if (navCode) {
+
+            navCode.textContent =
+                operator.code.toUpperCase();
+
+        }
+
+
+        /* -----------------------------
+           OPERATOR NAME
+        ----------------------------- */
+
+        const operatorNames =
+            document.querySelectorAll(
+                "[data-operator-name]"
+            );
+
+
+        operatorNames.forEach(
+            element => {
+
+                element.textContent =
+                    operator.username;
+
+            }
+        );
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
