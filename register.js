@@ -3,255 +3,268 @@
    FICTIONAL GAME INTERFACE
 ========================================= */
 
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
+document.addEventListener("DOMContentLoaded", () => {
 
-        const form =
-            document.getElementById(
-                "registerForm"
-            );
+    const form = document.getElementById("registerForm");
 
-        if (!form) {
-            return;
-        }
+    if (!form) return;
 
+    const usernameInput =
+        document.getElementById("registerUsername");
 
-        const usernameInput =
-            document.getElementById(
-                "registerUsername"
-            );
+    const passwordInput =
+        document.getElementById("registerPassword");
 
-        const passwordInput =
-            document.getElementById(
-                "registerPassword"
-            );
+    const codeButtons =
+        document.querySelectorAll(".code-option");
 
-        const codeButtons =
-            document.querySelectorAll(
-                ".code-option"
-            );
+    const selectedCodeInput =
+        document.getElementById("selectedCode");
 
-        const selectedCodeInput =
-            document.getElementById(
-                "selectedCode"
-            );
+    const message =
+        document.getElementById("registerMessage");
 
-        const message =
-            document.getElementById(
-                "registerMessage"
-            );
+    let selectedCode = null;
 
 
-        let selectedCode = null;
+    /* =====================================
+       CODE SELECTION
+    ===================================== */
 
+    codeButtons.forEach(button => {
 
-        /* =====================================
-           CODE SELECTION
-        ===================================== */
+        button.addEventListener("click", () => {
 
-        codeButtons.forEach(button => {
+            selectedCode = button.dataset.code;
 
-            button.addEventListener(
-                "click",
-                () => {
+            selectedCodeInput.value = selectedCode;
 
-                    selectedCode =
-                        button.dataset.code;
+            codeButtons.forEach(btn => {
+                btn.classList.remove("selected");
+            });
 
-                    selectedCodeInput.value =
-                        selectedCode;
+            button.classList.add("selected");
 
-
-                    codeButtons.forEach(
-                        btn => {
-
-                            btn.classList.remove(
-                                "selected"
-                            );
-
-                        }
-                    );
-
-
-                    button.classList.add(
-                        "selected"
-                    );
-
-
-                    if (message) {
-
-                        message.textContent =
-                            "CODE " +
-                            selectedCode.toUpperCase() +
-                            " SELECTED";
-
-                    }
-
-                }
+            showMessage(
+                "CODE " +
+                selectedCode.toUpperCase() +
+                " SELECTED"
             );
 
         });
 
-
-        /* =====================================
-           REGISTER
-        ===================================== */
-
-        form.addEventListener(
-            "submit",
-            event => {
-
-                event.preventDefault();
+    });
 
 
-                const username =
-                    usernameInput.value.trim();
+    /* =====================================
+       REGISTER
+    ===================================== */
 
-                const password =
-                    passwordInput.value;
+    form.addEventListener("submit", event => {
+
+        event.preventDefault();
+
+        const username =
+            usernameInput.value.trim();
+
+        const password =
+            passwordInput.value;
 
 
-                /* -----------------------------
-                   VALIDATION
-                ----------------------------- */
+        /* =================================
+           VALIDATION
+        ================================= */
 
-                if (!username || !password) {
+        if (!username || !password) {
 
-                    showMessage(
-                        "COMPLETE ALL REQUIRED FIELDS."
-                    );
+            showMessage(
+                "COMPLETE ALL REQUIRED FIELDS."
+            );
 
-                    return;
+            return;
+        }
+
+
+        if (!selectedCode) {
+
+            showMessage(
+                "SELECT AN OPERATOR CODE."
+            );
+
+            return;
+        }
+
+
+        /* =================================
+           GREEN PROTECTION
+        ================================= */
+
+        if (selectedCode === "green") {
+
+            showMessage(
+                "CODE GREEN IS NOT AVAILABLE FOR REGISTRATION."
+            );
+
+            return;
+        }
+
+
+        /* =================================
+           GET ALL OPERATORS
+        ================================= */
+
+        let operators = [];
+
+        const savedOperators =
+            localStorage.getItem(
+                "mothershipOperators"
+            );
+
+        if (savedOperators) {
+
+            try {
+
+                operators =
+                    JSON.parse(savedOperators);
+
+                if (!Array.isArray(operators)) {
+                    operators = [];
                 }
 
+            } catch (error) {
 
-                if (!selectedCode) {
-
-                    showMessage(
-                        "SELECT AN OPERATOR CODE."
-                    );
-
-                    return;
-                }
-
-
-                /*
-                   GREEN IS NEVER ACCEPTED
-                   FROM REGISTRATION.
-                */
-
-                if (
-                    selectedCode === "green"
-                ) {
-
-                    showMessage(
-                        "CODE GREEN IS NOT AVAILABLE FOR REGISTRATION."
-                    );
-
-                    return;
-                }
-
-
-                /* -----------------------------
-                   CHECK EXISTING ACCOUNT
-                ----------------------------- */
-
-                const existing =
-                    localStorage.getItem(
-                        "mothershipOperator"
-                    );
-
-
-                if (existing) {
-
-                    showMessage(
-                        "AN OPERATOR PROFILE ALREADY EXISTS ON THIS TERMINAL."
-                    );
-
-                    return;
-                }
-
-
-                /* -----------------------------
-                   CREATE OPERATOR
-                ----------------------------- */
-
-                const operator = {
-
-                    username: username,
-
-                    /*
-                       Stored locally for this
-                       fictional game interface.
-                    */
-                    password: password,
-
-                    code: selectedCode,
-
-                    registered:
-                        new Date().toISOString()
-
-                };
-
-
-                /* -----------------------------
-                   SAVE
-                ----------------------------- */
-
-                localStorage.setItem(
-                    "mothershipOperator",
-                    JSON.stringify(operator)
+                console.error(
+                    "Operator database error:",
+                    error
                 );
 
-
-                /* -----------------------------
-                   SAVE LOGIN STATE
-                ----------------------------- */
-
-                localStorage.setItem(
-                    "mothershipLoggedIn",
-                    "true"
-                );
-
-
-                showMessage(
-                    "OPERATOR PROFILE CREATED. ACCESS CODE LOCKED."
-                );
-
-
-                /* -----------------------------
-                   GO TO HOME
-                ----------------------------- */
-
-                setTimeout(
-                    () => {
-
-                        window.location.href =
-                            "home.html";
-
-                    },
-                    1200
-                );
-
-            }
-        );
-
-
-        function showMessage(text) {
-
-            if (message) {
-
-                message.textContent =
-                    text;
-
-            } else {
-
-                alert(text);
+                operators = [];
 
             }
 
         }
 
+
+        /* =================================
+           CHECK USERNAME
+        ================================= */
+
+        const usernameExists =
+            operators.some(operator =>
+                operator.username.toLowerCase() ===
+                username.toLowerCase()
+            );
+
+
+        if (usernameExists) {
+
+            showMessage(
+                "THIS OPERATOR NAME ALREADY EXISTS."
+            );
+
+            return;
+        }
+
+
+        /* =================================
+           CREATE NEW OPERATOR
+        ================================= */
+
+        const operator = {
+
+            id:
+                crypto.randomUUID
+                ? crypto.randomUUID()
+                : Date.now().toString(),
+
+            username: username,
+
+            /*
+               Stored locally for this
+               fictional game interface.
+            */
+            password: password,
+
+            code: selectedCode,
+
+            registered:
+                new Date().toISOString()
+
+        };
+
+
+        /* =================================
+           ADD TO OPERATOR DATABASE
+        ================================= */
+
+        operators.push(operator);
+
+
+        localStorage.setItem(
+            "mothershipOperators",
+            JSON.stringify(operators)
+        );
+
+
+        /* =================================
+           SAVE CURRENT OPERATOR
+        ================================= */
+
+        localStorage.setItem(
+            "mothershipOperator",
+            JSON.stringify(operator)
+        );
+
+
+        /* =================================
+           LOGIN STATE
+        ================================= */
+
+        localStorage.setItem(
+            "mothershipLoggedIn",
+            "true"
+        );
+
+
+        /* =================================
+           SUCCESS
+        ================================= */
+
+        showMessage(
+            "OPERATOR PROFILE CREATED. ACCESS CODE LOCKED."
+        );
+
+
+        /* =================================
+           GO TO HOME
+        ================================= */
+
+        setTimeout(() => {
+
+            window.location.href =
+                "home.html";
+
+        }, 1200);
+
+    });
+
+
+    /* =====================================
+       MESSAGE
+    ===================================== */
+
+    function showMessage(text) {
+
+        if (message) {
+
+            message.textContent = text;
+
+        } else {
+
+            alert(text);
+
+        }
+
     }
-);
+
+});
