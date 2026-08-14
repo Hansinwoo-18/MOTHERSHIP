@@ -1,26 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mothership</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeoVerse Shop</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="landing.css">
 </head>
 <body>
 
+<header>
+    <div class="logo" id="secretLogo">
+        NEOVERSE
+    </div>
 
-    <div class="container">
-    <h1>MOTHERSHIP</h1>
+    <nav>
+        <a href="#">Anime</a>
+        <a href="#">K-Drama</a>
+        <a href="#">Figures</a>
+        <a href="#">Accessories</a>
+    </nav>
+</header>
 
-    <button onclick="window.location.href='boot.html'"></button>
-    ENTER
-</button>
-</div>
+<section class="hero">
+    <h1>ANIME & K-DRAMA STORE</h1>
+    <p>Premium merchandise from your favorite worlds.</p>
 
-<script src="script.js"></script>
+    <button>SHOP NOW</button>
+</section>
+
+<section class="products">
+
+    <div class="card">
+        <img src="https://picsum.photos/300/300?1">
+        <h3>Anime Hoodie</h3>
+        <p>₹1499</p>
+    </div>
+
+    <div class="card">
+        <img src="https://picsum.photos/300/300?2">
+        <h3>K-Drama Mug</h3>
+        <p>₹499</p>
+    </div>
+
+    <div class="card">
+        <img src="https://picsum.photos/300/300?3">
+        <h3>Character Figure</h3>
+        <p>₹2499</p>
+    </div>
+
+</section>
+
+<div id="secretMessage"></div>
+
+<script src="landing.js"></script>
+
 </body>
 </html>
